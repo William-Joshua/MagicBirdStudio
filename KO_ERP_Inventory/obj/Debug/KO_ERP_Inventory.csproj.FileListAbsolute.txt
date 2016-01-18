@@ -1,0 +1,6 @@
+D:\workspace\WebSite\Project\KO_ERP_Inventory\KO_ERP_Inventory\bin\KO_ERP_Inventory.dll
+D:\workspace\WebSite\Project\KO_ERP_Inventory\KO_ERP_Inventory\bin\KO_ERP_Inventory.pdb
+D:\workspace\WebSite\Project\KO_ERP_Inventory\KO_ERP_Inventory\obj\Debug\ResolveAssemblyReference.cache
+D:\workspace\WebSite\Project\KO_ERP_Inventory\KO_ERP_Inventory\obj\Debug\KO_ERP_Inventory.dll
+D:\workspace\WebSite\Project\KO_ERP_Inventory\KO_ERP_Inventory\obj\Debug\KO_ERP_Inventory.pdb
+D:\workspace\WebSite\Project\KO_ERP_Inventory\KO_ERP_Inventory\bin\log4net.pdb

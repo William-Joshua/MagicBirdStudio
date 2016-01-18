@@ -1,0 +1,50 @@
+﻿body
+{
+	margin: 0;
+	padding: 0;
+	background-color: #d0e4fd;
+}
+
+ul
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+li
+{
+	padding: 5px;
+}
+.login
+{
+	width: 100%;
+    height: 303px;
+    margin: 150px 0 auto auto;
+    background-color: #FFF;
+}
+
+.loginBox
+{
+	margin: 0 auto;
+	background: url(../Resources/images/GlobalImages/loginBox.png);
+	height: 303px;
+	width:703px;	
+}
+.loginBoxMain
+{
+	float:right;
+	margin: 100px 50px auto auto;
+	padding:20px;
+}
+
+.wrap
+{
+	text-align: center;
+    height: 300px;
+    margin-top: 15%;
+}
+.wrap #error
+{
+	color:#FFF;
+	font-family:@Adobe 仿宋 Std R;
+}

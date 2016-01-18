@@ -1,0 +1,55 @@
+﻿body
+{
+	margin: 0;
+	padding: 0;
+	background-image: url(../Resources/images/GlobalImages/topbase.gif);
+	background-repeat:repeat-x;
+	background-color: #d0e4fd;
+}
+
+ul
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+li
+{
+	float: left;
+	padding:2px;
+}
+
+.container
+{
+	display:block;
+}
+
+.container #toolbox
+{
+	padding-top:20px;
+	width: 220px;
+	float:right;
+}
+
+.userinfo
+{
+	font-size: 0.8em;
+	padding-top: 6px;
+	float: right;
+	width: 160px;
+	margin-right: 20px;
+}
+.userinfo #userimg
+{
+	background-image: url(../Resources/images/GlobalImages/userinfo48x48.png);
+	width: 48px;
+	height: 48px;
+	float: left;
+	margin-right: 10%;
+}
+
+.userinfo #username
+{
+	padding-top: 12px;
+}
+
