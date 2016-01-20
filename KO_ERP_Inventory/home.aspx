@@ -21,9 +21,9 @@
             </div>
         </body>
     </noframes>
-    <frame src="topAction.aspx" name="topLayout" scrolling="no" />
-    <frameset cols="180,*">
-        <frame src="menuAction.aspx" name="menuLayout" scrolling="yes" />
+    <frame src="topAction.aspx" name="topLayout" scrolling="no" noresize="noresize" />
+    <frameset cols="160,*">
+        <frame src="menuAction.aspx" name="menuLayout" scrolling="yes" noresize="noresize" />
         <frame src="mainAction.aspx" name="mainLayout" scrolling="yes" />
     </frameset>
 </frameset>

@@ -114,7 +114,7 @@ namespace KO_ERP_Inventory
 
             HttpCookie cookie = HttpContext.Current.Request.Cookies["asperp"];//获取客户端cookies
 
-            if (null == cookie)
+            if (null != cookie)
             {
                 // 判断客户端cookie是否显示为登陆允许
                 if ("True" == cookie.Values["logstate"].ToString())

@@ -20,12 +20,12 @@
                     <ul>
                         <li>
                             <a>
-                                <asp:Label ID="username" runat="server" Text="用户名" Font-Bold="true" Width="72px"></asp:Label>
+                                <asp:Label ID="username" runat="server" Text="用户名" Font-Names="Microsoft YaHei" ForeColor="#666666" Width="72px"></asp:Label>
                             </a>                       
                         </li>
                         <li>
                             <a>
-                                <asp:Label ID="userright" runat="server" Text="用户权限" Font-Bold="true" Width="72px"></asp:Label>
+                                <asp:Label ID="userright" runat="server" Text="用户权限" Font-Names="Microsoft YaHei" ForeColor="#666666" Width="72px"></asp:Label>
                             </a>                          
                         </li>
                     </ul>

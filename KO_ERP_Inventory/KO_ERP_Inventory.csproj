@@ -60,6 +60,41 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="asp_code\SearchStock.aspx.cs">
+      <DependentUpon>SearchStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="asp_code\SearchStock.aspx.designer.cs">
+      <DependentUpon>SearchStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="asp_code\WMS_InStock.aspx.cs">
+      <DependentUpon>WMS_InStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="asp_code\WMS_InStock.aspx.designer.cs">
+      <DependentUpon>WMS_InStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="asp_code\WMS_IQC.aspx.cs">
+      <DependentUpon>WMS_IQC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="asp_code\WMS_IQC.aspx.designer.cs">
+      <DependentUpon>WMS_IQC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="asp_code\WMS_Picking.aspx.cs">
+      <DependentUpon>WMS_Picking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="asp_code\WMS_Picking.aspx.designer.cs">
+      <DependentUpon>WMS_Picking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="asp_code\WMS_QuantityIn.aspx.cs">
+      <DependentUpon>WMS_QuantityIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="asp_code\WMS_QuantityIn.aspx.designer.cs">
+      <DependentUpon>WMS_QuantityIn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -101,31 +136,64 @@
   <ItemGroup>
     <Content Include="App_Themes\AspWidget\AspWidget.css" />
     <Content Include="App_Themes\AspWidget\AspWidget.skin" />
+    <Content Include="asp_code\SearchStock.aspx" />
+    <Content Include="asp_code\WMS_InStock.aspx" />
+    <Content Include="asp_code\WMS_IQC.aspx" />
+    <Content Include="asp_code\WMS_Picking.aspx" />
+    <Content Include="asp_code\WMS_QuantityIn.aspx" />
     <Content Include="css_code\mainAction.css" />
     <Content Include="css_code\menuAction.css" />
     <Content Include="css_code\topAction.css" />
     <Content Include="home.aspx" />
+    <Content Include="js_code\menuAction.js" />
     <Content Include="mainAction.aspx" />
     <Content Include="menuAction.aspx" />
+    <Content Include="Resources\images\content\dotted.png" />
     <Content Include="Resources\images\GlobalImages\backward.png" />
     <Content Include="Resources\images\GlobalImages\exit.png" />
     <Content Include="Resources\images\GlobalImages\favicon.ico" />
     <Content Include="Resources\images\GlobalImages\forward.png" />
     <Content Include="Resources\images\GlobalImages\home.png" />
     <Content Include="Resources\images\GlobalImages\logo.gif" />
+    <Content Include="Resources\images\GlobalImages\menulistbg.png" />
     <Content Include="Resources\images\GlobalImages\noframe.png" />
     <Content Include="Resources\images\GlobalImages\refresh.png" />
     <Content Include="Resources\images\GlobalImages\topbase.gif" />
     <Content Include="Resources\images\GlobalImages\userdetail48x48.png" />
     <Content Include="Resources\images\GlobalImages\userinfo.png" />
     <Content Include="Resources\images\GlobalImages\userinfo48x48.png" />
+    <Content Include="Resources\images\LacalImages\arrow_next.png" />
+    <Content Include="Resources\images\LacalImages\Blue_Truck.png" />
+    <Content Include="Resources\images\LacalImages\Check_Income.net.png" />
+    <Content Include="Resources\images\LacalImages\Pick_Cell.png" />
+    <Content Include="Resources\images\LacalImages\Store_Cell.png" />
+    <Content Include="Resources\images\LacalImages\Store_Info.png" />
+    <Content Include="Resources\images\LacalImages\Store_Search.png" />
+    <Content Include="Resources\images\left\app.png" />
+    <Content Include="Resources\images\left\app_current.png" />
+    <Content Include="Resources\images\left\channel.png" />
+    <Content Include="Resources\images\left\channel_current.png" />
+    <Content Include="Resources\images\left\cloud.png" />
+    <Content Include="Resources\images\left\cloud_current.png" />
+    <Content Include="Resources\images\left\custom.png" />
+    <Content Include="Resources\images\left\custom_current.png" />
+    <Content Include="Resources\images\left\home.png" />
+    <Content Include="Resources\images\left\home_current.png" />
+    <Content Include="Resources\images\left\line_bg.png" />
+    <Content Include="Resources\images\left\select_xl.png" />
+    <Content Include="Resources\images\left\select_xl01.png" />
+    <Content Include="Resources\images\left\source.png" />
+    <Content Include="Resources\images\left\source_current.png" />
+    <Content Include="Resources\images\left\statistics.png" />
+    <Content Include="Resources\images\left\statistics_current.png" />
+    <Content Include="Resources\images\left\syetem_management.png" />
+    <Content Include="Resources\images\left\syetem_management_c.png" />
+    <Content Include="Resources\images\left\system.png" />
+    <Content Include="Resources\images\left\system_current.png" />
     <Content Include="topAction.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="html_code\" />
-    <Folder Include="js_code\" />
-    <Folder Include="Resources\images\LacalImages\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
