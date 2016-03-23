@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ErpInventory" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="batchinformation">
+    <Key>
+      <PropertyRef Name="BatchID" />
+    </Key>
+    <Property Name="BatchID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ComponentID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BatchNum" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Agent" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PurchaseID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="NowState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="componentinformation" Relationship="Self.BatchInfo_compidfk" FromRole="batchinformation" ToRole="componentinformation" />
+    <NavigationProperty Name="purchasecontract" Relationship="Self.BatchInfo_purchidfk" FromRole="batchinformation" ToRole="purchasecontract" />
+    <NavigationProperty Name="incomeinformations" Relationship="Self.IncomeInfo_batchidfk" FromRole="batchinformation" ToRole="incomeinformation" />
+    <NavigationProperty Name="inspectinformations" Relationship="Self.InspectInfo_batchidfk" FromRole="batchinformation" ToRole="inspectinformation" />
+    <NavigationProperty Name="pickstockinformations" Relationship="Self.PickInfo_batchidfk" FromRole="batchinformation" ToRole="pickstockinformation" />
+    <NavigationProperty Name="stockerrorinformations" Relationship="Self.StockErr_batchidfk" FromRole="batchinformation" ToRole="stockerrorinformation" />
+    <NavigationProperty Name="stockinformations" Relationship="Self.StockInfo_batchidfk" FromRole="batchinformation" ToRole="stockinformation" />
+    <NavigationProperty Name="t_inspectreport" Relationship="Self.treport_batchidfk" FromRole="batchinformation" ToRole="t_inspectreport" />
+  </EntityType>
+  <EntityType Name="componentinformation">
+    <Key>
+      <PropertyRef Name="ComponentID" />
+    </Key>
+    <Property Name="ComponentID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ComponentTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ComponentTypeAb" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ComponentSpec" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PinPackage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ComponentRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="batchinformations" Relationship="Self.BatchInfo_compidfk" FromRole="componentinformation" ToRole="batchinformation" />
+    <NavigationProperty Name="vendorinformation" Relationship="Self.VendorInformation_idfk" FromRole="componentinformation" ToRole="vendorinformation" />
+  </EntityType>
+  <EntityType Name="incomeinformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BatchID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="batchinformation" Relationship="Self.IncomeInfo_batchidfk" FromRole="incomeinformation" ToRole="batchinformation" />
+    <NavigationProperty Name="usermanagement" Relationship="Self.IncomeInfo_useridfk" FromRole="incomeinformation" ToRole="usermanagement" />
+  </EntityType>
+  <EntityType Name="inspectinformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BatchID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InspectID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="batchinformation" Relationship="Self.InspectInfo_batchidfk" FromRole="inspectinformation" ToRole="batchinformation" />
+    <NavigationProperty Name="inspectreport" Relationship="Self.InspectInfo_inspectidfk" FromRole="inspectinformation" ToRole="inspectreport" />
+    <NavigationProperty Name="usermanagement" Relationship="Self.InspectInfo_useridfk" FromRole="inspectinformation" ToRole="usermanagement" />
+  </EntityType>
+  <EntityType Name="inspectreport">
+    <Key>
+      <PropertyRef Name="InspectID" />
+    </Key>
+    <Property Name="InspectID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InspectName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Details" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="inspectinformations" Relationship="Self.InspectInfo_inspectidfk" FromRole="inspectreport" ToRole="inspectinformation" />
+  </EntityType>
+  <EntityType Name="ordercontract">
+    <Key>
+      <PropertyRef Name="ContractID" />
+    </Key>
+    <Property Name="ContractID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContractName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LeadingOfficial" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ContractFileAdd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="usermanagement" Relationship="Self.Order_useridfk" FromRole="ordercontract" ToRole="usermanagement" />
+    <NavigationProperty Name="plancomponentlists" Relationship="Self.planlist_bookidfk" FromRole="ordercontract" ToRole="plancomponentlist" />
+  </EntityType>
+  <EntityType Name="pickingtable">
+    <Key>
+      <PropertyRef Name="TableID" />
+    </Key>
+    <Property Name="TableID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Details" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PickUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="usermanagement" Relationship="Self.pick_useridfk" FromRole="pickingtable" ToRole="usermanagement" />
+  </EntityType>
+  <EntityType Name="pickstockinformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BatchID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PickAmount" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PickUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="batchinformation" Relationship="Self.PickInfo_batchidfk" FromRole="pickstockinformation" ToRole="batchinformation" />
+    <NavigationProperty Name="usermanagement" Relationship="Self.PickInfo_useridfk" FromRole="pickstockinformation" ToRole="usermanagement" />
+  </EntityType>
+  <EntityType Name="plancomponentlist">
+    <Key>
+      <PropertyRef Name="PlanID" />
+    </Key>
+    <Property Name="PlanID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PlanName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContractID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PlanDetail" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="ordercontract" Relationship="Self.planlist_bookidfk" FromRole="plancomponentlist" ToRole="ordercontract" />
+  </EntityType>
+  <EntityType Name="purchasecontract">
+    <Key>
+      <PropertyRef Name="ContractID" />
+    </Key>
+    <Property Name="ContractID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContractName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LeadingOfficial" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ContractFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ContractFileAdd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="batchinformations" Relationship="Self.BatchInfo_purchidfk" FromRole="purchasecontract" ToRole="batchinformation" />
+    <NavigationProperty Name="usermanagement" Relationship="Self.Purchase_useridfk" FromRole="purchasecontract" ToRole="usermanagement" />
+  </EntityType>
+  <EntityType Name="rightmanagement">
+    <Key>
+      <PropertyRef Name="RightID" />
+    </Key>
+    <Property Name="RightID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RightName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="rolemanagements" Relationship="Self.rolerights" FromRole="rightmanagement" ToRole="rolemanagement" />
+  </EntityType>
+  <EntityType Name="rolemanagement">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="userroles" Relationship="Self.userrole_roleidfk" FromRole="rolemanagement" ToRole="userrole" />
+    <NavigationProperty Name="rightmanagements" Relationship="Self.rolerights" FromRole="rolemanagement" ToRole="rightmanagement" />
+  </EntityType>
+  <EntityType Name="stockerrorinformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BatchID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ErrorAmount" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ErrorStep" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="batchinformation" Relationship="Self.StockErr_batchidfk" FromRole="stockerrorinformation" ToRole="batchinformation" />
+    <NavigationProperty Name="usermanagement" Relationship="Self.StockErr_useridfk" FromRole="stockerrorinformation" ToRole="usermanagement" />
+  </EntityType>
+  <EntityType Name="stockinformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BatchID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="StockArea" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="batchinformation" Relationship="Self.StockInfo_batchidfk" FromRole="stockinformation" ToRole="batchinformation" />
+    <NavigationProperty Name="usermanagement" Relationship="Self.StockInfo_useridfk" FromRole="stockinformation" ToRole="usermanagement" />
+  </EntityType>
+  <EntityType Name="usermanagement">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PassWord" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="incomeinformations" Relationship="Self.IncomeInfo_useridfk" FromRole="usermanagement" ToRole="incomeinformation" />
+    <NavigationProperty Name="inspectinformations" Relationship="Self.InspectInfo_useridfk" FromRole="usermanagement" ToRole="inspectinformation" />
+    <NavigationProperty Name="ordercontracts" Relationship="Self.Order_useridfk" FromRole="usermanagement" ToRole="ordercontract" />
+    <NavigationProperty Name="pickingtables" Relationship="Self.pick_useridfk" FromRole="usermanagement" ToRole="pickingtable" />
+    <NavigationProperty Name="pickstockinformations" Relationship="Self.PickInfo_useridfk" FromRole="usermanagement" ToRole="pickstockinformation" />
+    <NavigationProperty Name="purchasecontracts" Relationship="Self.Purchase_useridfk" FromRole="usermanagement" ToRole="purchasecontract" />
+    <NavigationProperty Name="stockerrorinformations" Relationship="Self.StockErr_useridfk" FromRole="usermanagement" ToRole="stockerrorinformation" />
+    <NavigationProperty Name="stockinformations" Relationship="Self.StockInfo_useridfk" FromRole="usermanagement" ToRole="stockinformation" />
+  </EntityType>
+  <EntityType Name="userrole">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="rolemanagement" Relationship="Self.userrole_roleidfk" FromRole="userrole" ToRole="rolemanagement" />
+  </EntityType>
+  <EntityType Name="t_inspectreport">
+    <Key>
+      <PropertyRef Name="BatchID" />
+      <PropertyRef Name="T_Details" />
+    </Key>
+    <Property Name="BatchID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="T_Details" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="batchinformation" Relationship="Self.treport_batchidfk" FromRole="t_inspectreport" ToRole="batchinformation" />
+  </EntityType>
+  <EntityType Name="t_picktable">
+    <Key>
+      <PropertyRef Name="AddTime" />
+    </Key>
+    <Property Name="TableID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Details" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UserID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PickUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LoginID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="t_plancomponentlist">
+    <Key>
+      <PropertyRef Name="ComponentID" />
+      <PropertyRef Name="ComponentName" />
+      <PropertyRef Name="ComponentSpec" />
+    </Key>
+    <Property Name="ComponentID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ComponentName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ComponentSpec" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PinPackage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Agent" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vendorinformation">
+    <Key>
+      <PropertyRef Name="ComponentID" />
+    </Key>
+    <Property Name="ComponentID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Agent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="componentinformation" Relationship="Self.VendorInformation_idfk" FromRole="vendorinformation" ToRole="componentinformation" />
+  </EntityType>
+  <Association Name="BatchInfo_compidfk">
+    <End Role="componentinformation" Type="Self.componentinformation" Multiplicity="1" />
+    <End Role="batchinformation" Type="Self.batchinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componentinformation">
+        <PropertyRef Name="ComponentID" />
+      </Principal>
+      <Dependent Role="batchinformation">
+        <PropertyRef Name="ComponentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BatchInfo_purchidfk">
+    <End Role="purchasecontract" Type="Self.purchasecontract" Multiplicity="0..1" />
+    <End Role="batchinformation" Type="Self.batchinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="purchasecontract">
+        <PropertyRef Name="ContractID" />
+      </Principal>
+      <Dependent Role="batchinformation">
+        <PropertyRef Name="PurchaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncomeInfo_batchidfk">
+    <End Role="batchinformation" Type="Self.batchinformation" Multiplicity="1" />
+    <End Role="incomeinformation" Type="Self.incomeinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batchinformation">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="incomeinformation">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InspectInfo_batchidfk">
+    <End Role="batchinformation" Type="Self.batchinformation" Multiplicity="1" />
+    <End Role="inspectinformation" Type="Self.inspectinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batchinformation">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="inspectinformation">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PickInfo_batchidfk">
+    <End Role="batchinformation" Type="Self.batchinformation" Multiplicity="1" />
+    <End Role="pickstockinformation" Type="Self.pickstockinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batchinformation">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="pickstockinformation">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockErr_batchidfk">
+    <End Role="batchinformation" Type="Self.batchinformation" Multiplicity="1" />
+    <End Role="stockerrorinformation" Type="Self.stockerrorinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batchinformation">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="stockerrorinformation">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockInfo_batchidfk">
+    <End Role="batchinformation" Type="Self.batchinformation" Multiplicity="1" />
+    <End Role="stockinformation" Type="Self.stockinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batchinformation">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="stockinformation">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="treport_batchidfk">
+    <End Role="batchinformation" Type="Self.batchinformation" Multiplicity="1" />
+    <End Role="t_inspectreport" Type="Self.t_inspectreport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batchinformation">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="t_inspectreport">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VendorInformation_idfk">
+    <End Role="componentinformation" Type="Self.componentinformation" Multiplicity="1" />
+    <End Role="vendorinformation" Type="Self.vendorinformation" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="componentinformation">
+        <PropertyRef Name="ComponentID" />
+      </Principal>
+      <Dependent Role="vendorinformation">
+        <PropertyRef Name="ComponentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncomeInfo_useridfk">
+    <End Role="usermanagement" Type="Self.usermanagement" Multiplicity="1" />
+    <End Role="incomeinformation" Type="Self.incomeinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usermanagement">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="incomeinformation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InspectInfo_inspectidfk">
+    <End Role="inspectreport" Type="Self.inspectreport" Multiplicity="1" />
+    <End Role="inspectinformation" Type="Self.inspectinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="inspectreport">
+        <PropertyRef Name="InspectID" />
+      </Principal>
+      <Dependent Role="inspectinformation">
+        <PropertyRef Name="InspectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InspectInfo_useridfk">
+    <End Role="usermanagement" Type="Self.usermanagement" Multiplicity="1" />
+    <End Role="inspectinformation" Type="Self.inspectinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usermanagement">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="inspectinformation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Order_useridfk">
+    <End Role="usermanagement" Type="Self.usermanagement" Multiplicity="1" />
+    <End Role="ordercontract" Type="Self.ordercontract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usermanagement">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ordercontract">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="planlist_bookidfk">
+    <End Role="ordercontract" Type="Self.ordercontract" Multiplicity="1" />
+    <End Role="plancomponentlist" Type="Self.plancomponentlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ordercontract">
+        <PropertyRef Name="ContractID" />
+      </Principal>
+      <Dependent Role="plancomponentlist">
+        <PropertyRef Name="ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pick_useridfk">
+    <End Role="usermanagement" Type="Self.usermanagement" Multiplicity="1" />
+    <End Role="pickingtable" Type="Self.pickingtable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usermanagement">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="pickingtable">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PickInfo_useridfk">
+    <End Role="usermanagement" Type="Self.usermanagement" Multiplicity="1" />
+    <End Role="pickstockinformation" Type="Self.pickstockinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usermanagement">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="pickstockinformation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Purchase_useridfk">
+    <End Role="usermanagement" Type="Self.usermanagement" Multiplicity="1" />
+    <End Role="purchasecontract" Type="Self.purchasecontract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usermanagement">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="purchasecontract">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="userrole_roleidfk">
+    <End Role="rolemanagement" Type="Self.rolemanagement" Multiplicity="1" />
+    <End Role="userrole" Type="Self.userrole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rolemanagement">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="userrole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockErr_useridfk">
+    <End Role="usermanagement" Type="Self.usermanagement" Multiplicity="1" />
+    <End Role="stockerrorinformation" Type="Self.stockerrorinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usermanagement">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="stockerrorinformation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockInfo_useridfk">
+    <End Role="usermanagement" Type="Self.usermanagement" Multiplicity="1" />
+    <End Role="stockinformation" Type="Self.stockinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usermanagement">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="stockinformation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="rolerights">
+    <End Role="rightmanagement" Type="Self.rightmanagement" Multiplicity="*" />
+    <End Role="rolemanagement" Type="Self.rolemanagement" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ErpInventoryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="batchinformations" EntityType="Self.batchinformation" />
+    <EntitySet Name="componentinformations" EntityType="Self.componentinformation" />
+    <EntitySet Name="incomeinformations" EntityType="Self.incomeinformation" />
+    <EntitySet Name="inspectinformations" EntityType="Self.inspectinformation" />
+    <EntitySet Name="inspectreports" EntityType="Self.inspectreport" />
+    <EntitySet Name="ordercontracts" EntityType="Self.ordercontract" />
+    <EntitySet Name="pickingtables" EntityType="Self.pickingtable" />
+    <EntitySet Name="pickstockinformations" EntityType="Self.pickstockinformation" />
+    <EntitySet Name="plancomponentlists" EntityType="Self.plancomponentlist" />
+    <EntitySet Name="purchasecontracts" EntityType="Self.purchasecontract" />
+    <EntitySet Name="rightmanagements" EntityType="Self.rightmanagement" />
+    <EntitySet Name="rolemanagements" EntityType="Self.rolemanagement" />
+    <EntitySet Name="stockerrorinformations" EntityType="Self.stockerrorinformation" />
+    <EntitySet Name="stockinformations" EntityType="Self.stockinformation" />
+    <EntitySet Name="usermanagements" EntityType="Self.usermanagement" />
+    <EntitySet Name="userroles" EntityType="Self.userrole" />
+    <EntitySet Name="t_inspectreport" EntityType="Self.t_inspectreport" />
+    <EntitySet Name="t_picktable" EntityType="Self.t_picktable" />
+    <EntitySet Name="t_plancomponentlist" EntityType="Self.t_plancomponentlist" />
+    <EntitySet Name="vendorinformations" EntityType="Self.vendorinformation" />
+    <AssociationSet Name="BatchInfo_compidfk" Association="Self.BatchInfo_compidfk">
+      <End Role="componentinformation" EntitySet="componentinformations" />
+      <End Role="batchinformation" EntitySet="batchinformations" />
+    </AssociationSet>
+    <AssociationSet Name="BatchInfo_purchidfk" Association="Self.BatchInfo_purchidfk">
+      <End Role="purchasecontract" EntitySet="purchasecontracts" />
+      <End Role="batchinformation" EntitySet="batchinformations" />
+    </AssociationSet>
+    <AssociationSet Name="IncomeInfo_batchidfk" Association="Self.IncomeInfo_batchidfk">
+      <End Role="batchinformation" EntitySet="batchinformations" />
+      <End Role="incomeinformation" EntitySet="incomeinformations" />
+    </AssociationSet>
+    <AssociationSet Name="InspectInfo_batchidfk" Association="Self.InspectInfo_batchidfk">
+      <End Role="batchinformation" EntitySet="batchinformations" />
+      <End Role="inspectinformation" EntitySet="inspectinformations" />
+    </AssociationSet>
+    <AssociationSet Name="PickInfo_batchidfk" Association="Self.PickInfo_batchidfk">
+      <End Role="batchinformation" EntitySet="batchinformations" />
+      <End Role="pickstockinformation" EntitySet="pickstockinformations" />
+    </AssociationSet>
+    <AssociationSet Name="StockErr_batchidfk" Association="Self.StockErr_batchidfk">
+      <End Role="batchinformation" EntitySet="batchinformations" />
+      <End Role="stockerrorinformation" EntitySet="stockerrorinformations" />
+    </AssociationSet>
+    <AssociationSet Name="StockInfo_batchidfk" Association="Self.StockInfo_batchidfk">
+      <End Role="batchinformation" EntitySet="batchinformations" />
+      <End Role="stockinformation" EntitySet="stockinformations" />
+    </AssociationSet>
+    <AssociationSet Name="treport_batchidfk" Association="Self.treport_batchidfk">
+      <End Role="batchinformation" EntitySet="batchinformations" />
+      <End Role="t_inspectreport" EntitySet="t_inspectreport" />
+    </AssociationSet>
+    <AssociationSet Name="VendorInformation_idfk" Association="Self.VendorInformation_idfk">
+      <End Role="componentinformation" EntitySet="componentinformations" />
+      <End Role="vendorinformation" EntitySet="vendorinformations" />
+    </AssociationSet>
+    <AssociationSet Name="IncomeInfo_useridfk" Association="Self.IncomeInfo_useridfk">
+      <End Role="usermanagement" EntitySet="usermanagements" />
+      <End Role="incomeinformation" EntitySet="incomeinformations" />
+    </AssociationSet>
+    <AssociationSet Name="InspectInfo_inspectidfk" Association="Self.InspectInfo_inspectidfk">
+      <End Role="inspectreport" EntitySet="inspectreports" />
+      <End Role="inspectinformation" EntitySet="inspectinformations" />
+    </AssociationSet>
+    <AssociationSet Name="InspectInfo_useridfk" Association="Self.InspectInfo_useridfk">
+      <End Role="usermanagement" EntitySet="usermanagements" />
+      <End Role="inspectinformation" EntitySet="inspectinformations" />
+    </AssociationSet>
+    <AssociationSet Name="Order_useridfk" Association="Self.Order_useridfk">
+      <End Role="usermanagement" EntitySet="usermanagements" />
+      <End Role="ordercontract" EntitySet="ordercontracts" />
+    </AssociationSet>
+    <AssociationSet Name="planlist_bookidfk" Association="Self.planlist_bookidfk">
+      <End Role="ordercontract" EntitySet="ordercontracts" />
+      <End Role="plancomponentlist" EntitySet="plancomponentlists" />
+    </AssociationSet>
+    <AssociationSet Name="pick_useridfk" Association="Self.pick_useridfk">
+      <End Role="usermanagement" EntitySet="usermanagements" />
+      <End Role="pickingtable" EntitySet="pickingtables" />
+    </AssociationSet>
+    <AssociationSet Name="PickInfo_useridfk" Association="Self.PickInfo_useridfk">
+      <End Role="usermanagement" EntitySet="usermanagements" />
+      <End Role="pickstockinformation" EntitySet="pickstockinformations" />
+    </AssociationSet>
+    <AssociationSet Name="Purchase_useridfk" Association="Self.Purchase_useridfk">
+      <End Role="usermanagement" EntitySet="usermanagements" />
+      <End Role="purchasecontract" EntitySet="purchasecontracts" />
+    </AssociationSet>
+    <AssociationSet Name="userrole_roleidfk" Association="Self.userrole_roleidfk">
+      <End Role="rolemanagement" EntitySet="rolemanagements" />
+      <End Role="userrole" EntitySet="userroles" />
+    </AssociationSet>
+    <AssociationSet Name="StockErr_useridfk" Association="Self.StockErr_useridfk">
+      <End Role="usermanagement" EntitySet="usermanagements" />
+      <End Role="stockerrorinformation" EntitySet="stockerrorinformations" />
+    </AssociationSet>
+    <AssociationSet Name="StockInfo_useridfk" Association="Self.StockInfo_useridfk">
+      <End Role="usermanagement" EntitySet="usermanagements" />
+      <End Role="stockinformation" EntitySet="stockinformations" />
+    </AssociationSet>
+    <AssociationSet Name="rolerights" Association="Self.rolerights">
+      <End Role="rightmanagement" EntitySet="rightmanagements" />
+      <End Role="rolemanagement" EntitySet="rolemanagements" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ErpInventoryStoreContainer" CdmEntityContainer="ErpInventoryEntities">
+    <EntitySetMapping Name="batchinformations">
+      <EntityTypeMapping TypeName="ErpInventory.batchinformation">
+        <MappingFragment StoreEntitySet="batchinformation">
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+          <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+          <ScalarProperty Name="NowState" ColumnName="NowState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="componentinformations">
+      <EntityTypeMapping TypeName="ErpInventory.componentinformation">
+        <MappingFragment StoreEntitySet="componentinformation">
+          <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+          <ScalarProperty Name="ComponentTypeName" ColumnName="ComponentTypeName" />
+          <ScalarProperty Name="ComponentTypeAb" ColumnName="ComponentTypeAb" />
+          <ScalarProperty Name="ComponentSpec" ColumnName="ComponentSpec" />
+          <ScalarProperty Name="PinPackage" ColumnName="PinPackage" />
+          <ScalarProperty Name="ComponentRemarks" ColumnName="ComponentRemarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="incomeinformations">
+      <EntityTypeMapping TypeName="ErpInventory.incomeinformation">
+        <MappingFragment StoreEntitySet="incomeinformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inspectinformations">
+      <EntityTypeMapping TypeName="ErpInventory.inspectinformation">
+        <MappingFragment StoreEntitySet="inspectinformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="InspectID" ColumnName="InspectID" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inspectreports">
+      <EntityTypeMapping TypeName="ErpInventory.inspectreport">
+        <MappingFragment StoreEntitySet="inspectreport">
+          <ScalarProperty Name="InspectID" ColumnName="InspectID" />
+          <ScalarProperty Name="InspectName" ColumnName="InspectName" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ordercontracts">
+      <EntityTypeMapping TypeName="ErpInventory.ordercontract">
+        <MappingFragment StoreEntitySet="ordercontract">
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="ContractName" ColumnName="ContractName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LeadingOfficial" ColumnName="LeadingOfficial" />
+          <ScalarProperty Name="ContractFileAdd" ColumnName="ContractFileAdd" />
+          <ScalarProperty Name="ContractRemarks" ColumnName="ContractRemarks" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pickingtables">
+      <EntityTypeMapping TypeName="ErpInventory.pickingtable">
+        <MappingFragment StoreEntitySet="pickingtable">
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PickUser" ColumnName="PickUser" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pickstockinformations">
+      <EntityTypeMapping TypeName="ErpInventory.pickstockinformation">
+        <MappingFragment StoreEntitySet="pickstockinformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="PickAmount" ColumnName="PickAmount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PickUser" ColumnName="PickUser" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plancomponentlists">
+      <EntityTypeMapping TypeName="ErpInventory.plancomponentlist">
+        <MappingFragment StoreEntitySet="plancomponentlist">
+          <ScalarProperty Name="PlanID" ColumnName="PlanID" />
+          <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="PlanDetail" ColumnName="PlanDetail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchasecontracts">
+      <EntityTypeMapping TypeName="ErpInventory.purchasecontract">
+        <MappingFragment StoreEntitySet="purchasecontract">
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="ContractName" ColumnName="ContractName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LeadingOfficial" ColumnName="LeadingOfficial" />
+          <ScalarProperty Name="ContractFile" ColumnName="ContractFile" />
+          <ScalarProperty Name="ContractFileAdd" ColumnName="ContractFileAdd" />
+          <ScalarProperty Name="ContractRemarks" ColumnName="ContractRemarks" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rightmanagements">
+      <EntityTypeMapping TypeName="ErpInventory.rightmanagement">
+        <MappingFragment StoreEntitySet="rightmanagement">
+          <ScalarProperty Name="RightID" ColumnName="RightID" />
+          <ScalarProperty Name="RightName" ColumnName="RightName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rolemanagements">
+      <EntityTypeMapping TypeName="ErpInventory.rolemanagement">
+        <MappingFragment StoreEntitySet="rolemanagement">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stockerrorinformations">
+      <EntityTypeMapping TypeName="ErpInventory.stockerrorinformation">
+        <MappingFragment StoreEntitySet="stockerrorinformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="ErrorAmount" ColumnName="ErrorAmount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ErrorStep" ColumnName="ErrorStep" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stockinformations">
+      <EntityTypeMapping TypeName="ErpInventory.stockinformation">
+        <MappingFragment StoreEntitySet="stockinformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="StockArea" ColumnName="StockArea" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usermanagements">
+      <EntityTypeMapping TypeName="ErpInventory.usermanagement">
+        <MappingFragment StoreEntitySet="usermanagement">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userroles">
+      <EntityTypeMapping TypeName="ErpInventory.userrole">
+        <MappingFragment StoreEntitySet="userrole">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_inspectreport">
+      <EntityTypeMapping TypeName="ErpInventory.t_inspectreport">
+        <MappingFragment StoreEntitySet="t_inspectreport">
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="T_Details" ColumnName="T_Details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_picktable">
+      <EntityTypeMapping TypeName="ErpInventory.t_picktable">
+        <MappingFragment StoreEntitySet="t_picktable">
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PickUser" ColumnName="PickUser" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_plancomponentlist">
+      <EntityTypeMapping TypeName="ErpInventory.t_plancomponentlist">
+        <MappingFragment StoreEntitySet="t_plancomponentlist">
+          <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+          <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
+          <ScalarProperty Name="ComponentSpec" ColumnName="ComponentSpec" />
+          <ScalarProperty Name="PinPackage" ColumnName="PinPackage" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vendorinformations">
+      <EntityTypeMapping TypeName="ErpInventory.vendorinformation">
+        <MappingFragment StoreEntitySet="vendorinformation">
+          <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="rolerights" TypeName="ErpInventory.rolerights" StoreEntitySet="rolerights">
+      <EndProperty Name="rightmanagement">
+        <ScalarProperty Name="RightID" ColumnName="RightID" />
+      </EndProperty>
+      <EndProperty Name="rolemanagement">
+        <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
