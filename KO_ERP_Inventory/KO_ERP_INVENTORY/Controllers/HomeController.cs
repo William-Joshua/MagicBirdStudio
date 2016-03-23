@@ -8,6 +8,11 @@ namespace KO_ERP_INVENTORY.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Welcome()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             return View();
