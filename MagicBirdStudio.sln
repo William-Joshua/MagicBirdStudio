@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicBirdStudio", "MagicBirdStudio\MagicBirdStudio.csproj", "{810E96DA-6FF0-4A63-85D3-56CA0F62D9B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicBirdStudio.Tests", "MagicBirdStudio.Tests\MagicBirdStudio.Tests.csproj", "{9DC54047-A514-4B00-85EF-8FFAF61BF0A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{810E96DA-6FF0-4A63-85D3-56CA0F62D9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810E96DA-6FF0-4A63-85D3-56CA0F62D9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810E96DA-6FF0-4A63-85D3-56CA0F62D9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810E96DA-6FF0-4A63-85D3-56CA0F62D9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC54047-A514-4B00-85EF-8FFAF61BF0A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC54047-A514-4B00-85EF-8FFAF61BF0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC54047-A514-4B00-85EF-8FFAF61BF0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC54047-A514-4B00-85EF-8FFAF61BF0A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
