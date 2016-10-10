@@ -2,9 +2,8 @@
 
 ### Author : William.D.Joshua
 ### Date : 2016/01/28
+### Description
+```
+仓储与生产流水线工艺控制与元器件批次管控系统
+```
 
-依赖列表(持续完善中) :
-
-1. 开发工具 : MSVS 2012
-2. 开发框架版本 : .net framework 4.5
-3. 数据库版本 : Sql Server 2012

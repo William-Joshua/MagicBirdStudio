@@ -53,8 +53,8 @@ create table ListManagement(
 	ListId varchar(32) comment '清单ID号,检测报告ID,出库单ID',
 	ListName varchar(100) comment '清单名称,检测报告名,出库单名称',
 	ListAmount int comment '清单生产数量(检测报告,出库单无数量)',
-	ContractID varchar(32) '合同编号,(检测报告,出库单无合同编号)',
-	ListRemark varchar(500) '清单备注 ',
-	ListDetail longblob '	清单详情',
+	ContractID varchar(32) comment '合同编号,(检测报告,出库单无合同编号)',
+	ListRemark varchar(500) comment '清单备注 ',
+	ListDetail longblob comment '	清单详情',
 	AddTime timestamp not null default current_timestamp 
 )
