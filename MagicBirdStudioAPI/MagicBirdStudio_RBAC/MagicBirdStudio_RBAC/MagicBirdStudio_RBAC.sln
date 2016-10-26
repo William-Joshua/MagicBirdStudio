@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicBirdStudio_RBAC", "MagicBirdStudio_RBAC\MagicBirdStudio_RBAC.csproj", "{0D781128-37C0-4F4D-A37E-4E99373361FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicBirdStudio_RBAC.Tests", "MagicBirdStudio_RBAC.Tests\MagicBirdStudio_RBAC.Tests.csproj", "{276ECDBA-8439-4FAC-BC06-8E0E7BD02DC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D781128-37C0-4F4D-A37E-4E99373361FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D781128-37C0-4F4D-A37E-4E99373361FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D781128-37C0-4F4D-A37E-4E99373361FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D781128-37C0-4F4D-A37E-4E99373361FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{276ECDBA-8439-4FAC-BC06-8E0E7BD02DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{276ECDBA-8439-4FAC-BC06-8E0E7BD02DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{276ECDBA-8439-4FAC-BC06-8E0E7BD02DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{276ECDBA-8439-4FAC-BC06-8E0E7BD02DC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

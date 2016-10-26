@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88d6d964195f4bf7bc8250302753928f" Name="Diagram1" >
+        <EntityTypeShape EntityType="MagicBirdStudio_RBAC.accountinfo" Width="1.5" PointX="11.55586454810382" PointY="26.635383111720618" />
+        <EntityTypeShape EntityType="MagicBirdStudio_RBAC.groupmanager" Width="1.5" PointX="0.25601411809027852" PointY="7.3883406703306083" />
+        <EntityTypeShape EntityType="MagicBirdStudio_RBAC.menuinfo" Width="1.5" PointX="4.4458052704324036" PointY="23.22917741128671" />
+        <EntityTypeShape EntityType="MagicBirdStudio_RBAC.permissioninfo" Width="1.5" PointX="1.5528910670210099" PointY="7.6489377355430914" />
+        <EntityTypeShape EntityType="MagicBirdStudio_RBAC.roleinfo" Width="1.5" PointX="5.2048048587538318" PointY="28.083410276138881" />
+        <AssociationConnector Association="MagicBirdStudio_RBAC.grouprolemapping" />
+        <AssociationConnector Association="MagicBirdStudio_RBAC.permissionmenumapping" />
+        <AssociationConnector Association="MagicBirdStudio_RBAC.rolepermissionmapping" />
+        <AssociationConnector Association="MagicBirdStudio_RBAC.usergroupmapping" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
