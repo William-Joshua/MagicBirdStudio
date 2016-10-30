@@ -13,10 +13,10 @@ namespace MagicBirdStudio_RBAC
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MagicBirdStudio_RBACContainer : DbContext
+    public partial class magicbirdstudiorbacEntities : DbContext
     {
-        public MagicBirdStudio_RBACContainer()
-            : base("name=MagicBirdStudio_RBACContainer")
+        public magicbirdstudiorbacEntities()
+            : base("name=magicbirdstudiorbacEntities")
         {
         }
     
@@ -25,10 +25,10 @@ namespace MagicBirdStudio_RBAC
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<accountinfo> accountinfoes { get; set; }
-        public DbSet<groupmanager> groupmanagers { get; set; }
-        public DbSet<menuinfo> menuinfoes { get; set; }
-        public DbSet<permissioninfo> permissioninfoes { get; set; }
-        public DbSet<roleinfo> roleinfoes { get; set; }
+        public DbSet<accountinfo> accountinfo { get; set; }
+        public DbSet<groupmanager> groupmanager { get; set; }
+        public DbSet<menuinfo> menuinfo { get; set; }
+        public DbSet<permissioninfo> permissioninfo { get; set; }
+        public DbSet<roleinfo> roleinfo { get; set; }
     }
 }

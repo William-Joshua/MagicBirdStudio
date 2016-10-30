@@ -16,7 +16,7 @@ namespace MagicBirdStudio_RBAC
     {
         public groupmanager()
         {
-            this.accountinfoes = new HashSet<accountinfo>();
+            this.accountinfo = new HashSet<accountinfo>();
         }
     
         public int GroupID { get; set; }
@@ -24,6 +24,6 @@ namespace MagicBirdStudio_RBAC
         public string GroupDescription { get; set; }
     
         public virtual roleinfo roleinfo { get; set; }
-        public virtual ICollection<accountinfo> accountinfoes { get; set; }
+        public virtual ICollection<accountinfo> accountinfo { get; set; }
     }
 }

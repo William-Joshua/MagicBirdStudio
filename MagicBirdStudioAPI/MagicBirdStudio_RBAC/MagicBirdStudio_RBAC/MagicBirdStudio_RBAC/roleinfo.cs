@@ -16,14 +16,14 @@ namespace MagicBirdStudio_RBAC
     {
         public roleinfo()
         {
-            this.groupmanagers = new HashSet<groupmanager>();
+            this.groupmanager = new HashSet<groupmanager>();
         }
     
         public int RoleID { get; set; }
         public string RoleName { get; set; }
         public string RoleDescription { get; set; }
     
-        public virtual ICollection<groupmanager> groupmanagers { get; set; }
+        public virtual ICollection<groupmanager> groupmanager { get; set; }
         public virtual permissioninfo permissioninfo { get; set; }
     }
 }

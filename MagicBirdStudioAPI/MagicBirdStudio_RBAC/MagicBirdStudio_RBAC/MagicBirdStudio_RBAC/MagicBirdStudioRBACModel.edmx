@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="magicbirdstudiorbacModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="magicbirdstudiorbacModelStoreContainer">
+          <EntitySet Name="accountinfo" EntityType="magicbirdstudiorbacModel.Store.accountinfo" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="groupmanager" EntityType="magicbirdstudiorbacModel.Store.groupmanager" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="grouprolemapping" EntityType="magicbirdstudiorbacModel.Store.grouprolemapping" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="menuinfo" EntityType="magicbirdstudiorbacModel.Store.menuinfo" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="permissioninfo" EntityType="magicbirdstudiorbacModel.Store.permissioninfo" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="permissionmenumapping" EntityType="magicbirdstudiorbacModel.Store.permissionmenumapping" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="roleinfo" EntityType="magicbirdstudiorbacModel.Store.roleinfo" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="rolepermissionmapping" EntityType="magicbirdstudiorbacModel.Store.rolepermissionmapping" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="usergroupmapping" EntityType="magicbirdstudiorbacModel.Store.usergroupmapping" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <AssociationSet Name="fk_GroupRoleMapping_Group" Association="magicbirdstudiorbacModel.Store.fk_GroupRoleMapping_Group">
+            <End Role="groupmanager" EntitySet="groupmanager" />
+            <End Role="grouprolemapping" EntitySet="grouprolemapping" />
+          </AssociationSet>
+          <AssociationSet Name="fk_GroupRoleMapping_Role" Association="magicbirdstudiorbacModel.Store.fk_GroupRoleMapping_Role">
+            <End Role="roleinfo" EntitySet="roleinfo" />
+            <End Role="grouprolemapping" EntitySet="grouprolemapping" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PermissionMenuMapping_Menu" Association="magicbirdstudiorbacModel.Store.fk_PermissionMenuMapping_Menu">
+            <End Role="menuinfo" EntitySet="menuinfo" />
+            <End Role="permissionmenumapping" EntitySet="permissionmenumapping" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PermissionMenuMapping_Permission" Association="magicbirdstudiorbacModel.Store.fk_PermissionMenuMapping_Permission">
+            <End Role="permissioninfo" EntitySet="permissioninfo" />
+            <End Role="permissionmenumapping" EntitySet="permissionmenumapping" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RolePermissionMapping_Permission" Association="magicbirdstudiorbacModel.Store.fk_RolePermissionMapping_Permission">
+            <End Role="permissioninfo" EntitySet="permissioninfo" />
+            <End Role="rolepermissionmapping" EntitySet="rolepermissionmapping" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RolePermissionMapping_Role" Association="magicbirdstudiorbacModel.Store.fk_RolePermissionMapping_Role">
+            <End Role="roleinfo" EntitySet="roleinfo" />
+            <End Role="rolepermissionmapping" EntitySet="rolepermissionmapping" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserGroupMapping_Account" Association="magicbirdstudiorbacModel.Store.fk_UserGroupMapping_Account">
+            <End Role="accountinfo" EntitySet="accountinfo" />
+            <End Role="usergroupmapping" EntitySet="usergroupmapping" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserGroupMapping_Group" Association="magicbirdstudiorbacModel.Store.fk_UserGroupMapping_Group">
+            <End Role="groupmanager" EntitySet="groupmanager" />
+            <End Role="usergroupmapping" EntitySet="usergroupmapping" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="accountinfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Telephone" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="E-Mail" Type="varchar" MaxLength="45" />
+          <Property Name="JobLevel" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="EntryTime" Type="datetime" Nullable="false" />
+          <Property Name="isService" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groupmanager">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="GroupDescription" Type="text" />
+        </EntityType>
+        <EntityType Name="grouprolemapping">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="menuinfo">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="MenuName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="WebPath" Type="varchar" MaxLength="200" />
+          <Property Name="MenuICON" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="text" />
+          <Property Name="ParentMenu" Type="int" />
+          <Property Name="MenuSort" Type="int" Nullable="false" />
+          <Property Name="isEffective" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="permissioninfo">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+          <Property Name="PermissionName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="permissionmenumapping">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roleinfo">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="RoleDescription" Type="text" />
+        </EntityType>
+        <EntityType Name="rolepermissionmapping">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usergroupmapping">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_GroupRoleMapping_Group">
+          <End Role="groupmanager" Type="magicbirdstudiorbacModel.Store.groupmanager" Multiplicity="1" />
+          <End Role="grouprolemapping" Type="magicbirdstudiorbacModel.Store.grouprolemapping" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="groupmanager">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="grouprolemapping">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_GroupRoleMapping_Role">
+          <End Role="roleinfo" Type="magicbirdstudiorbacModel.Store.roleinfo" Multiplicity="1" />
+          <End Role="grouprolemapping" Type="magicbirdstudiorbacModel.Store.grouprolemapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roleinfo">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="grouprolemapping">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PermissionMenuMapping_Menu">
+          <End Role="menuinfo" Type="magicbirdstudiorbacModel.Store.menuinfo" Multiplicity="1" />
+          <End Role="permissionmenumapping" Type="magicbirdstudiorbacModel.Store.permissionmenumapping" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="menuinfo">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="permissionmenumapping">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PermissionMenuMapping_Permission">
+          <End Role="permissioninfo" Type="magicbirdstudiorbacModel.Store.permissioninfo" Multiplicity="1" />
+          <End Role="permissionmenumapping" Type="magicbirdstudiorbacModel.Store.permissionmenumapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissioninfo">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="permissionmenumapping">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RolePermissionMapping_Permission">
+          <End Role="permissioninfo" Type="magicbirdstudiorbacModel.Store.permissioninfo" Multiplicity="1" />
+          <End Role="rolepermissionmapping" Type="magicbirdstudiorbacModel.Store.rolepermissionmapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissioninfo">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="rolepermissionmapping">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RolePermissionMapping_Role">
+          <End Role="roleinfo" Type="magicbirdstudiorbacModel.Store.roleinfo" Multiplicity="1" />
+          <End Role="rolepermissionmapping" Type="magicbirdstudiorbacModel.Store.rolepermissionmapping" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="roleinfo">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="rolepermissionmapping">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserGroupMapping_Account">
+          <End Role="accountinfo" Type="magicbirdstudiorbacModel.Store.accountinfo" Multiplicity="1" />
+          <End Role="usergroupmapping" Type="magicbirdstudiorbacModel.Store.usergroupmapping" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="accountinfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="usergroupmapping">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserGroupMapping_Group">
+          <End Role="groupmanager" Type="magicbirdstudiorbacModel.Store.groupmanager" Multiplicity="1" />
+          <End Role="usergroupmapping" Type="magicbirdstudiorbacModel.Store.usergroupmapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groupmanager">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="usergroupmapping">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="magicbirdstudiorbacModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="magicbirdstudiorbacEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="accountinfo" EntityType="magicbirdstudiorbacModel.accountinfo" />
+          <EntitySet Name="groupmanager" EntityType="magicbirdstudiorbacModel.groupmanager" />
+          <EntitySet Name="menuinfo" EntityType="magicbirdstudiorbacModel.menuinfo" />
+          <EntitySet Name="permissioninfo" EntityType="magicbirdstudiorbacModel.permissioninfo" />
+          <EntitySet Name="roleinfo" EntityType="magicbirdstudiorbacModel.roleinfo" />
+          <AssociationSet Name="grouprolemapping" Association="magicbirdstudiorbacModel.grouprolemapping">
+            <End Role="groupmanager" EntitySet="groupmanager" />
+            <End Role="roleinfo" EntitySet="roleinfo" />
+          </AssociationSet>
+          <AssociationSet Name="permissionmenumapping" Association="magicbirdstudiorbacModel.permissionmenumapping">
+            <End Role="menuinfo" EntitySet="menuinfo" />
+            <End Role="permissioninfo" EntitySet="permissioninfo" />
+          </AssociationSet>
+          <AssociationSet Name="rolepermissionmapping" Association="magicbirdstudiorbacModel.rolepermissionmapping">
+            <End Role="permissioninfo" EntitySet="permissioninfo" />
+            <End Role="roleinfo" EntitySet="roleinfo" />
+          </AssociationSet>
+          <AssociationSet Name="usergroupmapping" Association="magicbirdstudiorbacModel.usergroupmapping">
+            <End Role="accountinfo" EntitySet="accountinfo" />
+            <End Role="groupmanager" EntitySet="groupmanager" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="accountinfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Birthday" Type="DateTime" />
+          <Property Name="Telephone" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="E_Mail" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="JobLevel" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="EntryTime" Type="DateTime" Nullable="false" />
+          <Property Name="isService" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="groupmanager" Relationship="magicbirdstudiorbacModel.usergroupmapping" FromRole="accountinfo" ToRole="groupmanager" />
+        </EntityType>
+        <EntityType Name="groupmanager">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="GroupDescription" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="roleinfo" Relationship="magicbirdstudiorbacModel.grouprolemapping" FromRole="groupmanager" ToRole="roleinfo" />
+          <NavigationProperty Name="accountinfo" Relationship="magicbirdstudiorbacModel.usergroupmapping" FromRole="groupmanager" ToRole="accountinfo" />
+        </EntityType>
+        <EntityType Name="menuinfo">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="MenuName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="WebPath" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="MenuICON" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="ParentMenu" Type="Int32" />
+          <Property Name="MenuSort" Type="Int32" Nullable="false" />
+          <Property Name="isEffective" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="permissioninfo" Relationship="magicbirdstudiorbacModel.permissionmenumapping" FromRole="menuinfo" ToRole="permissioninfo" />
+        </EntityType>
+        <EntityType Name="permissioninfo">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="PermissionName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="menuinfo" Relationship="magicbirdstudiorbacModel.permissionmenumapping" FromRole="permissioninfo" ToRole="menuinfo" />
+          <NavigationProperty Name="roleinfo" Relationship="magicbirdstudiorbacModel.rolepermissionmapping" FromRole="permissioninfo" ToRole="roleinfo" />
+        </EntityType>
+        <EntityType Name="roleinfo">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="RoleDescription" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="groupmanager" Relationship="magicbirdstudiorbacModel.grouprolemapping" FromRole="roleinfo" ToRole="groupmanager" />
+          <NavigationProperty Name="permissioninfo" Relationship="magicbirdstudiorbacModel.rolepermissionmapping" FromRole="roleinfo" ToRole="permissioninfo" />
+        </EntityType>
+        <Association Name="grouprolemapping">
+          <End Role="groupmanager" Type="magicbirdstudiorbacModel.groupmanager" Multiplicity="*" />
+          <End Role="roleinfo" Type="magicbirdstudiorbacModel.roleinfo" Multiplicity="0..1" />
+        </Association>
+        <Association Name="permissionmenumapping">
+          <End Role="menuinfo" Type="magicbirdstudiorbacModel.menuinfo" Multiplicity="*" />
+          <End Role="permissioninfo" Type="magicbirdstudiorbacModel.permissioninfo" Multiplicity="0..1" />
+        </Association>
+        <Association Name="rolepermissionmapping">
+          <End Role="permissioninfo" Type="magicbirdstudiorbacModel.permissioninfo" Multiplicity="0..1" />
+          <End Role="roleinfo" Type="magicbirdstudiorbacModel.roleinfo" Multiplicity="*" />
+        </Association>
+        <Association Name="usergroupmapping">
+          <End Role="accountinfo" Type="magicbirdstudiorbacModel.accountinfo" Multiplicity="*" />
+          <End Role="groupmanager" Type="magicbirdstudiorbacModel.groupmanager" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="magicbirdstudiorbacModelStoreContainer" CdmEntityContainer="magicbirdstudiorbacEntities">
+          <EntitySetMapping Name="accountinfo">
+            <EntityTypeMapping TypeName="magicbirdstudiorbacModel.accountinfo">
+              <MappingFragment StoreEntitySet="accountinfo">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
+                <ScalarProperty Name="JobLevel" ColumnName="JobLevel" />
+                <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="isService" ColumnName="isService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groupmanager">
+            <EntityTypeMapping TypeName="magicbirdstudiorbacModel.groupmanager">
+              <MappingFragment StoreEntitySet="groupmanager">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menuinfo">
+            <EntityTypeMapping TypeName="magicbirdstudiorbacModel.menuinfo">
+              <MappingFragment StoreEntitySet="menuinfo">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="WebPath" ColumnName="WebPath" />
+                <ScalarProperty Name="MenuICON" ColumnName="MenuICON" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ParentMenu" ColumnName="ParentMenu" />
+                <ScalarProperty Name="MenuSort" ColumnName="MenuSort" />
+                <ScalarProperty Name="isEffective" ColumnName="isEffective" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permissioninfo">
+            <EntityTypeMapping TypeName="magicbirdstudiorbacModel.permissioninfo">
+              <MappingFragment StoreEntitySet="permissioninfo">
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="PermissionName" ColumnName="PermissionName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roleinfo">
+            <EntityTypeMapping TypeName="magicbirdstudiorbacModel.roleinfo">
+              <MappingFragment StoreEntitySet="roleinfo">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="grouprolemapping" TypeName="magicbirdstudiorbacModel.grouprolemapping" StoreEntitySet="grouprolemapping">
+            <EndProperty Name="groupmanager">
+              <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+            </EndProperty>
+            <EndProperty Name="roleinfo">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="permissionmenumapping" TypeName="magicbirdstudiorbacModel.permissionmenumapping" StoreEntitySet="permissionmenumapping">
+            <EndProperty Name="menuinfo">
+              <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+            </EndProperty>
+            <EndProperty Name="permissioninfo">
+              <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="rolepermissionmapping" TypeName="magicbirdstudiorbacModel.rolepermissionmapping" StoreEntitySet="rolepermissionmapping">
+            <EndProperty Name="permissioninfo">
+              <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+            </EndProperty>
+            <EndProperty Name="roleinfo">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="usergroupmapping" TypeName="magicbirdstudiorbacModel.usergroupmapping" StoreEntitySet="usergroupmapping">
+            <EndProperty Name="accountinfo">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="groupmanager">
+              <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

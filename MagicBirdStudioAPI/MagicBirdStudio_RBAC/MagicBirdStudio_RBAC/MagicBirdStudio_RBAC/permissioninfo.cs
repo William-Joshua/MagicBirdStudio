@@ -16,15 +16,15 @@ namespace MagicBirdStudio_RBAC
     {
         public permissioninfo()
         {
-            this.menuinfoes = new HashSet<menuinfo>();
-            this.roleinfoes = new HashSet<roleinfo>();
+            this.menuinfo = new HashSet<menuinfo>();
+            this.roleinfo = new HashSet<roleinfo>();
         }
     
         public int PermissionID { get; set; }
         public string PermissionName { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<menuinfo> menuinfoes { get; set; }
-        public virtual ICollection<roleinfo> roleinfoes { get; set; }
+        public virtual ICollection<menuinfo> menuinfo { get; set; }
+        public virtual ICollection<roleinfo> roleinfo { get; set; }
     }
 }
