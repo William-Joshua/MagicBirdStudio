@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserAuthController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -586,6 +587,7 @@
     <Content Include="Content\Components\raphael\raphael-min.js" />
     <Content Include="Content\Components\raphael\raphael.js" />
     <Content Include="Content\Scripts\js\sb-admin-2.js" />
+    <Content Include="Content\Sources\Images\icons\MagicBirdAuth.svg" />
     <Content Include="Content\Sources\Images\icons\MagicBirdERP_114x114.png" />
     <Content Include="Content\Sources\Images\icons\MagicBirdERP_120x120.png" />
     <Content Include="Content\Sources\Images\icons\MagicBirdERP_144x144.png" />
@@ -601,6 +603,7 @@
     <Content Include="Content\Sources\Images\icons\MagicBird_57x57.png" />
     <Content Include="Content\Sources\Images\icons\MagicBird_72x72.png" />
     <Content Include="Content\Sources\Images\icons\MagicBird_76x76.png" />
+    <Content Include="Content\Styles\css\magicbird.css" />
     <Content Include="Content\Styles\css\sb-admin-2.css" />
     <Content Include="Content\Styles\css\timeline.css" />
     <Content Include="Document\dataBaseManual\MagicBirdStudioScript.sql" />
@@ -620,6 +623,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Sources\Images\img\" />
     <Folder Include="Content\Sources\Json\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -949,6 +953,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Document\dataBaseManual\MgicBirdStudio_DBManual.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserAuth\SignIn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_AuthLayout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

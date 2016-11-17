@@ -27,6 +27,9 @@ namespace MagicBirdStudio
             bundles.Add(new StyleBundle("~/Content/morris").Include(
                 "~/Content/Components/morrisjs/morris.css"
                 ));
+            bundles.Add(new StyleBundle("~/Content/magicbird").Include(
+               "~/Content/Styles/css/magicbird.css"
+               ));
             bundles.Add(new ScriptBundle("~/Script/Jquery").Include(
                 "~/Content/Components/jquery/dist/jquery.min.js"
                 ));
