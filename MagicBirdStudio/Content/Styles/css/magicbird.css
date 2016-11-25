@@ -1,6 +1,9 @@
 ﻿body {
 }
 
+legend {
+    display:none;
+}
 .skinLayoutAuth {
     background-color: #02546e;
     min-width: 0;

@@ -10,11 +10,17 @@ namespace MagicBirdStudio.Controllers
     {
         //
         // GET: /UserSignUp/
-
+        [HttpGet]
         public ActionResult SignIn()
         {
             return View();
         }
 
+        [HttpPost]
+        public ActionResult SignIn(Models.userAuth user)
+        {
+
+            return View();
+        }
     }
 }
