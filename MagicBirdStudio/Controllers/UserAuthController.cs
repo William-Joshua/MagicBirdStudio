@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using MagicBirdStudio.Models;
+using Newtonsoft.Json;
+
 namespace MagicBirdStudio.Controllers
 {
     public class UserAuthController : Controller
@@ -17,10 +20,12 @@ namespace MagicBirdStudio.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignIn(Models.userAuth user)
+        [AllowAnonymous]
+        public JsonResult SignIn(userAuth user)
         {
+            // 判断 AuthAmount 账号类型； 邮箱 or 用户名
 
-            return View();
-        }
+            return Json(user,JsonRequestBehavior.AllowGet);
+        }  
     }
 }

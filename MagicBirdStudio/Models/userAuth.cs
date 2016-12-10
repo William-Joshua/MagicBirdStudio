@@ -9,6 +9,19 @@ namespace MagicBirdStudio.Models
     public class userAuth
     {
         /// <summary>
+        /// Name(用户账号)
+        /// Type(string)
+        /// </summary>
+        [Required]
+        [Display(Name = " 用户账号")]
+        private string _authamount;
+        public string AuthAmount
+        {
+            get { return _authamount; }
+            set { _authamount = value; }
+        }
+
+        /// <summary>
         /// Name（用户名）
         /// Type(string)
         /// </summary>

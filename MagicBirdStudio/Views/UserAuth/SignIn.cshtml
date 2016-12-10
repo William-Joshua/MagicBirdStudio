@@ -5,6 +5,28 @@
     ViewBag.Title = "MagicBird 登陆页";
 }
 
+<script src="~/Content/Components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#submitUser").on("click", function () {
+            var userAuth = {
+                AuthAmount : $("#authAmount").val().trim(),
+                Password: $("#password").val()
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/UserAuth/SignIn",
+                data: userAuth,
+                success: function (data) {
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                }
+            });
+        });
+    });
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -33,16 +55,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    $(function () {
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("UserAuth","SignIn")',
-            contentType: "application/json; charset=utf-8",
-            data: {
-            }
-        });
-    })
-
-</script>
