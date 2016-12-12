@@ -128,12 +128,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MagicBirdStudio\MagicBirdStudio.csproj">
-      <Project>{810E96DA-6FF0-4A63-85D3-56CA0F62D9B7}</Project>
-      <Name>MagicBirdStudio</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
