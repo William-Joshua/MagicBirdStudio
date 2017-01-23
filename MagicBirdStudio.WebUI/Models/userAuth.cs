@@ -1,4 +1,13 @@
-﻿using System;
+﻿/**
+ * MagicBirdStudio -- 库存管理与流水线生成过程控制系统
+ * Author：William.D.Joshua
+ * E-Mail : njl.yxsky@gmail.com
+ * Create Date : 2017-01-12
+ * Create Description :
+ *     1. 用于验证用户登陆；
+ * Copyright (C) : GPL-3.0
+ **/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,12 +23,7 @@ namespace MagicBirdStudio.Models
         /// </summary>
         [Required]
         [Display(Name = " 用户账号")]
-        private string _authamount;
-        public string AuthAmount
-        {
-            get { return _authamount; }
-            set { _authamount = value; }
-        }
+        public string AuthAmount { get; set; }
 
         /// <summary>
         /// Name（用户名）
@@ -27,31 +31,16 @@ namespace MagicBirdStudio.Models
         /// </summary>
         [Required]
         [Display(Name = "用户名")]
-        private string _username;
-        public string UserName
-        {
-            get { return _username; }
-            set { _username = value; }
-        }
+        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "邮箱")]
         [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")]
-        private string _useremail;
-        public string UserEMail
-        {
-            get { return _useremail; }
-            set { _useremail = value; }
-        }
+        public string UserEMail { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "密码")]
-        private string _password;
-        public string PassWord
-        {
-            get { return _password; }
-            set { _password = value; }
-        }
+        public string PassWord { get; set; }
     }
 }
