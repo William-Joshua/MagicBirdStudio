@@ -8,19 +8,20 @@
 <script src="~/Content/Components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#submitUser").on("click", function () {
-            var userAuth = {
-                AuthAmount : $("#authAmount").val().trim(),
-                Password: $("#password").val()
-            }
-
+        $('#submitUser').click(function () {
+            var authAmount = $('#authAmount').val();
             $.ajax({
-                type: "POST",
-                url: "/UserAuth/SignIn",
-                data: userAuth,
-                success: function (data) {
+                url: "http://localhost:5006/api/userAuth/",
+                type: "GET",
+                dataType: 'jsonp',
+                data: {
+                    id: authAmount
                 },
-                error: function (xhr, textStatus, errorThrown) {
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
                 }
             });
         });

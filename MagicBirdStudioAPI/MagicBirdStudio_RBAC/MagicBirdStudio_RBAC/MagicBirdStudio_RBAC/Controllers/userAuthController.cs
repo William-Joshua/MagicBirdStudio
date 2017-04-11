@@ -36,7 +36,7 @@ namespace MagicBirdStudio_RBAC.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [ResponseType(typeof(userAuth))]
-        public IHttpActionResult GetUserAuth(string id)
+        public string GetUserAuth(string id)
         {
             magicbirdstudiorbacEntities mbsRbacEntities = new magicbirdstudiorbacEntities();
             var accountItem = mbsRbacEntities.accountinfo
@@ -47,13 +47,13 @@ namespace MagicBirdStudio_RBAC.Controllers
                                   joblevel = recordset.JobLevel,
                               }).ToList();
 
-            if (accountItem[0].username.Length == 0)
+            if (accountItem.Count == 0)
             {
-                return NotFound();
+                return "Can't Find this User";
             }
             string strb = string.Empty;
             strb = JsonConvert.SerializeObject(accountItem);
-            return Ok(strb);
+            return strb;
         }
         /// <summary>
         /// 
