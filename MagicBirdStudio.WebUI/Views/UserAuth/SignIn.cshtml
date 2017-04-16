@@ -11,17 +11,20 @@
         $('#submitUser').click(function () {
             var authAmount = $('#authAmount').val();
             $.ajax({
-                url: "http://localhost:5006/api/userAuth/",
+                url: "http://localhost:5006/api/userAuth/GetUserAuth",
                 type: "GET",
                 dataType: 'jsonp',
+                contentType: "application/javascript",
                 data: {
                     id: authAmount
                 },
-                success: function (data) {
-                    alert(data);
+                success: function (response) {
+                    alert(response);
                 },
-                error: function (request, status, error) {
-                    alert(request.responseText);
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
                 }
             });
         });

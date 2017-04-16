@@ -14,6 +14,7 @@ using System.Text;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Http.Description;
 using Newtonsoft.Json;
 using MagicBirdStudio_RBAC.Models;
@@ -25,7 +26,7 @@ namespace MagicBirdStudio_RBAC.Controllers
     {
         public userAuth userInfo = new userAuth();
         public userAuth[] userInfos = new userAuth[5];
-
+        
         public IEnumerable<userAuth> Get()
         {
             return userInfos;
@@ -36,7 +37,7 @@ namespace MagicBirdStudio_RBAC.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [ResponseType(typeof(userAuth))]
-        public string GetUserAuth(string id)
+        public IHttpActionResult GetUserAuth(string id)
         {
             magicbirdstudiorbacEntities mbsRbacEntities = new magicbirdstudiorbacEntities();
             var accountItem = mbsRbacEntities.accountinfo
@@ -49,11 +50,9 @@ namespace MagicBirdStudio_RBAC.Controllers
 
             if (accountItem.Count == 0)
             {
-                return "Can't Find this User";
+                return NotFound();
             }
-            string strb = string.Empty;
-            strb = JsonConvert.SerializeObject(accountItem);
-            return strb;
+            return Json(accountItem);
         }
         /// <summary>
         /// 

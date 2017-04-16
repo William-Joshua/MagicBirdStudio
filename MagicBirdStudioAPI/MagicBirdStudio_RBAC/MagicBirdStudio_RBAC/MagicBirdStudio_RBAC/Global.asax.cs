@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebApiContrib.Formatting.Jsonp;
 
 namespace MagicBirdStudio_RBAC
 {
@@ -22,6 +23,7 @@ namespace MagicBirdStudio_RBAC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            GlobalConfiguration.Configuration.Formatters.Insert(0, new JsonpMediaTypeFormatter(new System.Net.Http.Formatting.JsonMediaTypeFormatter()));
         }
     }
 }

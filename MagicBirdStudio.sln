@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicBirdStudio.Tests", "MagicBirdStudio.Tests\MagicBirdStudio.Tests.csproj", "{9DC54047-A514-4B00-85EF-8FFAF61BF0A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicBirdStudio.WebUI", "MagicBirdStudio.WebUI\MagicBirdStudio.WebUI.csproj", "{810E96DA-6FF0-4A63-85D3-56CA0F62D9B7}"
