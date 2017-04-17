@@ -37,18 +37,35 @@ namespace MagicBirdStudio_RBAC.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [ResponseType(typeof(userAuth))]
-        public IHttpActionResult GetUserAuth(string id)
+        public string GetUserAuth(string id, string callback)
         {
             magicbirdstudiorbacEntities mbsRbacEntities = new magicbirdstudiorbacEntities();
             var accountItem = mbsRbacEntities.accountinfo
                 .Where(recordset => recordset.UserID == id && recordset.isService == true)
                 .Select(recordset => new
-                              {
-                                  username = recordset.UserName,
-                                  joblevel = recordset.JobLevel,
-                              }).ToList();
+                {
+                    username = recordset.UserName,
+                    joblevel = recordset.JobLevel,
+                }).ToList();
 
             if (accountItem.Count == 0)
+            {
+                return "not found";
+            }
+            string json = JsonConvert.SerializeObject(accountItem).ToString();
+            return json;
+        }
+        public IHttpActionResult GetUserAuthJSON(string id)
+        {
+            magicbirdstudiorbacEntities mbsRbacEntities = new magicbirdstudiorbacEntities();
+            var accountItem = mbsRbacEntities.accountinfo
+                .Where(recordset => recordset.UserID == id && recordset.isService == true)
+                .Select(recordset => new
+                {
+                    username = recordset.UserName,
+                    joblevel = recordset.JobLevel,
+                }).ToList();
+            if(accountItem.Count == 0)
             {
                 return NotFound();
             }
