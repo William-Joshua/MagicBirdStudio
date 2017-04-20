@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="magicbirdstudiorbacModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="magicbirdstudiorbacModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="magicbirdstudiorbacModelStoreContainer">
           <EntitySet Name="accountinfo" EntityType="magicbirdstudiorbacModel.Store.accountinfo" store:Type="Tables" Schema="magicbirdstudio_rbac" />
           <EntitySet Name="groupmanager" EntityType="magicbirdstudiorbacModel.Store.groupmanager" store:Type="Tables" Schema="magicbirdstudio_rbac" />
@@ -14,6 +14,7 @@
           <EntitySet Name="permissionmenumapping" EntityType="magicbirdstudiorbacModel.Store.permissionmenumapping" store:Type="Tables" Schema="magicbirdstudio_rbac" />
           <EntitySet Name="roleinfo" EntityType="magicbirdstudiorbacModel.Store.roleinfo" store:Type="Tables" Schema="magicbirdstudio_rbac" />
           <EntitySet Name="rolepermissionmapping" EntityType="magicbirdstudiorbacModel.Store.rolepermissionmapping" store:Type="Tables" Schema="magicbirdstudio_rbac" />
+          <EntitySet Name="userauth" EntityType="magicbirdstudiorbacModel.Store.userauth" store:Type="Tables" Schema="magicbirdstudio_rbac" />
           <EntitySet Name="usergroupmapping" EntityType="magicbirdstudiorbacModel.Store.usergroupmapping" store:Type="Tables" Schema="magicbirdstudio_rbac" />
           <AssociationSet Name="fk_GroupRoleMapping_Group" Association="magicbirdstudiorbacModel.Store.fk_GroupRoleMapping_Group">
             <End Role="groupmanager" EntitySet="groupmanager" />
@@ -38,6 +39,10 @@
           <AssociationSet Name="fk_RolePermissionMapping_Role" Association="magicbirdstudiorbacModel.Store.fk_RolePermissionMapping_Role">
             <End Role="roleinfo" EntitySet="roleinfo" />
             <End Role="rolepermissionmapping" EntitySet="rolepermissionmapping" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserAuth_Account" Association="magicbirdstudiorbacModel.Store.fk_UserAuth_Account">
+            <End Role="accountinfo" EntitySet="accountinfo" />
+            <End Role="userauth" EntitySet="userauth" />
           </AssociationSet>
           <AssociationSet Name="fk_UserGroupMapping_Account" Association="magicbirdstudiorbacModel.Store.fk_UserGroupMapping_Account">
             <End Role="accountinfo" EntitySet="accountinfo" />
@@ -119,6 +124,16 @@
           <Property Name="RoleID" Type="int" Nullable="false" />
           <Property Name="PermissionID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="userauth">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="IdentityType" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Identifier" Type="varchar" MaxLength="45" />
+          <Property Name="Credential" Type="varchar" MaxLength="45" />
+        </EntityType>
         <EntityType Name="usergroupmapping">
           <Key>
             <PropertyRef Name="UserID" />
@@ -198,6 +213,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_UserAuth_Account">
+          <End Role="accountinfo" Type="magicbirdstudiorbacModel.Store.accountinfo" Multiplicity="1" />
+          <End Role="userauth" Type="magicbirdstudiorbacModel.Store.userauth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="accountinfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="userauth">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_UserGroupMapping_Account">
           <End Role="accountinfo" Type="magicbirdstudiorbacModel.Store.accountinfo" Multiplicity="1" />
           <End Role="usergroupmapping" Type="magicbirdstudiorbacModel.Store.usergroupmapping" Multiplicity="0..1" />
@@ -222,8 +249,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="magicbirdstudiorbacModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -249,6 +275,11 @@
             <End Role="accountinfo" EntitySet="accountinfo" />
             <End Role="groupmanager" EntitySet="groupmanager" />
           </AssociationSet>
+          <EntitySet Name="userauth" EntityType="magicbirdstudiorbacModel.userauth" />
+          <AssociationSet Name="fk_UserAuth_Account" Association="magicbirdstudiorbacModel.fk_UserAuth_Account">
+            <End Role="accountinfo" EntitySet="accountinfo" />
+            <End Role="userauth" EntitySet="userauth" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="accountinfo">
           <Key>
@@ -263,6 +294,7 @@
           <Property Name="EntryTime" Type="DateTime" Nullable="false" />
           <Property Name="isService" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="groupmanager" Relationship="magicbirdstudiorbacModel.usergroupmapping" FromRole="accountinfo" ToRole="groupmanager" />
+          <NavigationProperty Name="userauth" Relationship="magicbirdstudiorbacModel.fk_UserAuth_Account" FromRole="accountinfo" ToRole="userauth" />
         </EntityType>
         <EntityType Name="groupmanager">
           <Key>
@@ -323,6 +355,29 @@
         <Association Name="usergroupmapping">
           <End Role="accountinfo" Type="magicbirdstudiorbacModel.accountinfo" Multiplicity="*" />
           <End Role="groupmanager" Type="magicbirdstudiorbacModel.groupmanager" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="userauth">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserID" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IdentityType" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Identifier" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Credential" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="accountinfo" Relationship="magicbirdstudiorbacModel.fk_UserAuth_Account" FromRole="userauth" ToRole="accountinfo" />
+        </EntityType>
+        <Association Name="fk_UserAuth_Account">
+          <End Type="magicbirdstudiorbacModel.accountinfo" Role="accountinfo" Multiplicity="1" />
+          <End Type="magicbirdstudiorbacModel.userauth" Role="userauth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="accountinfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="userauth">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -417,6 +472,17 @@
               <ScalarProperty Name="GroupID" ColumnName="GroupID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="userauth">
+            <EntityTypeMapping TypeName="magicbirdstudiorbacModel.userauth">
+              <MappingFragment StoreEntitySet="userauth">
+                <ScalarProperty Name="Credential" ColumnName="Credential" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="IdentityType" ColumnName="IdentityType" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

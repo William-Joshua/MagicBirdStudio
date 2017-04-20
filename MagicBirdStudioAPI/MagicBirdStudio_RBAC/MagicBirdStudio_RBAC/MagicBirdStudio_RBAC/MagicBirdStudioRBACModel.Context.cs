@@ -30,5 +30,6 @@ namespace MagicBirdStudio_RBAC
         public DbSet<menuinfo> menuinfo { get; set; }
         public DbSet<permissioninfo> permissioninfo { get; set; }
         public DbSet<roleinfo> roleinfo { get; set; }
+        public DbSet<userauth> userauth { get; set; }
     }
 }

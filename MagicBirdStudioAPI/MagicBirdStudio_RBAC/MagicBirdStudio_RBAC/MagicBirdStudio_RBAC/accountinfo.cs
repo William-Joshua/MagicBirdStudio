@@ -14,6 +14,11 @@ namespace MagicBirdStudio_RBAC
     
     public partial class accountinfo
     {
+        public accountinfo()
+        {
+            this.userauth = new HashSet<userauth>();
+        }
+    
         public string UserID { get; set; }
         public string UserName { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
@@ -24,5 +29,6 @@ namespace MagicBirdStudio_RBAC
         public bool isService { get; set; }
     
         public virtual groupmanager groupmanager { get; set; }
+        public virtual ICollection<userauth> userauth { get; set; }
     }
 }

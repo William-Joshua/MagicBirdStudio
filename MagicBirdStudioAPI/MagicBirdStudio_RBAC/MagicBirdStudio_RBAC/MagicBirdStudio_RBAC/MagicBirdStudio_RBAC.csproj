@@ -196,6 +196,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Common\userSession.cs" />
     <Compile Include="Common\userVerify.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\userAuthController.cs" />
@@ -230,6 +231,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="roleinfo.cs">
+      <DependentUpon>MagicBirdStudioRBACModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="userauth.cs">
       <DependentUpon>MagicBirdStudioRBACModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

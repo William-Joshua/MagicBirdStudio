@@ -26,7 +26,8 @@ namespace MagicBirdStudio_RBAC.Controllers
     {
         public userAuth userInfo = new userAuth();
         public userAuth[] userInfos = new userAuth[5];
-        
+        private magicbirdstudiorbacEntities mbsRbacEntities = new magicbirdstudiorbacEntities();
+
         public IEnumerable<userAuth> Get()
         {
             return userInfos;
@@ -37,9 +38,9 @@ namespace MagicBirdStudio_RBAC.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [ResponseType(typeof(userAuth))]
-        public string GetUserAuth(string id, string callback)
+        public string GetUserAuth(string id, string password, string callback)
         {
-            magicbirdstudiorbacEntities mbsRbacEntities = new magicbirdstudiorbacEntities();
+            int value = userVerify.verifyUserIdentifier(id, password);
             var accountItem = mbsRbacEntities.accountinfo
                 .Where(recordset => recordset.UserID == id && recordset.isService == true)
                 .Select(recordset => new
@@ -55,61 +56,11 @@ namespace MagicBirdStudio_RBAC.Controllers
             string json = JsonConvert.SerializeObject(accountItem).ToString();
             return json;
         }
-        public IHttpActionResult GetUserAuthJSON(string id)
-        {
-            magicbirdstudiorbacEntities mbsRbacEntities = new magicbirdstudiorbacEntities();
-            var accountItem = mbsRbacEntities.accountinfo
-                .Where(recordset => recordset.UserID == id && recordset.isService == true)
-                .Select(recordset => new
-                {
-                    username = recordset.UserName,
-                    joblevel = recordset.JobLevel,
-                }).ToList();
-            if(accountItem.Count == 0)
-            {
-                return NotFound();
-            }
-            return Json(accountItem);
-        }
         /// <summary>
         /// 
         /// </summary>
         public void Post([FromBody]string value)
         {
-        }
-        
-        /// <summary>
-        /// 验证用户账号
-        /// </summary>
-        /// <returns></returns>
-        public userAuth verifyUserAuth(userAuth userAuth)
-        {
-            string AuthType = userVerify.verifyAuthType(userAuth.AuthAmount);
-            switch (AuthType)
-            {
-                case "E": 
-                    {
-                        userInfo = verifyEmail(userAuth);
-                    }; break;
-                case "I": 
-                    {
-                        userInfo = verifyUserID(userAuth);
-                    }; break;
-                default: 
-                    {
-                    }; break;
-            }
-            return userInfo;
-        }
-
-        public userAuth verifyUserID(userAuth userAuth)
-        {
-            return userInfo;
-        }
-
-        public userAuth verifyEmail(userAuth userAuth)
-        {
-            return userInfo;
         }
     }
 }
