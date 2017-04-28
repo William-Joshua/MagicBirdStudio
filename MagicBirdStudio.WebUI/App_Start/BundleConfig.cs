@@ -24,6 +24,10 @@ namespace MagicBirdStudio
             bundles.Add(new StyleBundle("~/Content/Font").Include(
                 "~/Content/Components/font-awesome/css/font-awesome.min.css"
                 ));
+            // sandbox bootstrap-datepicker css
+            bundles.Add(new StyleBundle("~/Content/Datepicker").Include(
+                "~/Content/Components/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"
+                ));
             bundles.Add(new StyleBundle("~/Content/morris").Include(
                 "~/Content/Components/morrisjs/morris.css"
                 ));
@@ -47,6 +51,13 @@ namespace MagicBirdStudio
                 ));
             bundles.Add(new ScriptBundle("~/Script/sb-admin-2").Include(
                 "~/Content/Scripts/js/sb-admin-2.js"
+                ));
+            // sandbox bootstrap-datepicker css
+            bundles.Add(new ScriptBundle("~/Script/Datepicker").Include(
+                "~/Content/Components/bootstrap-datepicker/js/bootstrap-datepicker.min.js",
+                "~/Content/Components/bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.min.js",
+                "~/Content/Components/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js",
+                "~/Content/Components/bootstrap-datepicker/locales/bootstrap-datepicker.ja.min.js"
                 ));
         }
     }

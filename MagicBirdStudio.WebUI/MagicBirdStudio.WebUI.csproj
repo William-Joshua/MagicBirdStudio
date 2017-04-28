@@ -139,6 +139,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker.css" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\Components\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\Components\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\Components\bootstrap-datepicker\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Content\Components\bootstrap-datepicker\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Content\Components\bootstrap-datepicker\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Content\Components\bootstrap-social\.gitignore" />
     <Content Include="Content\Components\bootstrap-social\bootstrap-social.css" />
     <Content Include="Content\Components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -957,6 +970,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_AuthLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserAuth\AuthRegister.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker.css.map" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker.min.css.map" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker.standalone.min.css.map" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker3.min.css.map" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\Components\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.min.css.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

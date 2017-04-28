@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+@{
+    ViewBag.Title = "MagicBird 新用户注册";
+}
+
+@Styles.Render("~/Content/Datepicker")
+@Scripts.Render("~/Script/Datepicker")
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <a href="/">
+                        <img src="~/Content/Sources/Images/icons/MagicBirdAuth.svg" />
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <fieldset>
+                            <legend></legend>
+                            <div class="form-group">
+                                <span> 用户名： </span><input class="form-control" placeholder="用户名" id="authUserName" name="username" type="text" autofocus>
+                                <span> 密码： </span><input class="form-control" placeholder="密码" id="password" name="password" type="password">
+                                <span> 确认密码： </span><input class="form-control" placeholder="密码" id="commitPassword" name="password" type="password">
+                                <span> 注册邮箱： </span><input class="form-control" placeholder="邮箱" id="authEMail" name="username" type="text">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel login-panel">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-boby">
+                        <form role="form">
+                            <fieldset>
+                                <legend></legend>
+                                <div class="form-group">
+                                    <span> 姓名：</span>
+                                    <input type="text" class="form-horizontal" value="" placeholder="姓名" id="userName" />
+                                    <select id="userSex">
+                                        <option value="F">女士</option>
+                                        <option value="M">先生</option>
+                                    </select>
+                                    <span> 联系方式：</span>
+                                    <input type="text" class="form-horizontal" value="" id="userTelephone" placeholder="联系方式" />
+                                    <span> 电子邮箱：</span><input type="text" value="" id="userEmail" placeholder="电子邮箱" />
+                                    <span> 生日： </span><input type="text" value="" id="userBirthday" />
+                                    <script type="text/javascript">
+                                        $("#userBirthday").datepicker({
+                                        });
+                                    </script>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

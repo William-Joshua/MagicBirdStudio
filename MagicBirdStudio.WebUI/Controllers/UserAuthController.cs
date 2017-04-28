@@ -38,5 +38,18 @@ namespace MagicBirdStudio.Controllers
 
             return Json(user,JsonRequestBehavior.AllowGet);
         }  
+
+        [HttpGet]
+        public ActionResult AuthRegister()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult AuthRegister(userAuth user)
+        {
+            return Json(user, JsonRequestBehavior.AllowGet);
+        }
     }
 }
